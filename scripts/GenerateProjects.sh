@@ -1,14 +1,14 @@
 gen() {
-    vendor/premake/premake5 gmake2
+    cmake -B build/ -S .
 }
 
 run() {
-    bin/Debug-linux-x86_64/Sandbox/Sandbox
+    build/Sandbox
 }
 
 create() {
     gen
-    make
+    cmake --build build/
     echo "Running your app"
     echo
     run

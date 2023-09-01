@@ -13,7 +13,7 @@ public:
     }
 };
 
-Lumina::Application *Lumina::CreateApplication()
+Lumina::Application* Lumina::CreateApplication()
 {
     return new Sandbox();
 }

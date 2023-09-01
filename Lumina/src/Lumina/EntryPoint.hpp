@@ -2,9 +2,9 @@
 
 #ifdef LU_PLATFORM_WINDOWS
 
-extern Lumina::Application *Lumina::CreateApplication();
+extern Lumina::Application* Lumina::CreateApplication();
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     auto app = Lumina::CreateApplication();
     app->Run();
@@ -15,9 +15,9 @@ int main(int argc, char **argv)
 
 #ifdef LU_PLATFORM_LINUX
 
-extern Lumina::Application *Lumina::CreateApplication();
+extern Lumina::Application* Lumina::CreateApplication();
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     std::cout << "Welcome to Lumina on linux\n";
     auto app = Lumina::CreateApplication();

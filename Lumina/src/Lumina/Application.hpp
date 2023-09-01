@@ -15,6 +15,6 @@ public:
 };
 
 // To be defined in client
-Application *CreateApplication();
+Application* CreateApplication();
 
 } // namespace Lumina

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Lumina/Log.hpp"
+#include "Lumina/Application.hpp"
+
 #ifdef LU_PLATFORM_WINDOWS
 
 extern Lumina::Application* Lumina::CreateApplication();
@@ -8,8 +10,8 @@ extern Lumina::Application* Lumina::CreateApplication();
 int main(int argc, char** argv)
 {
     Lumina::Log::Init();
-    Lumina::Log::GetCoreLogger()->warn("Initialized");
-    Lumina::Log::GetClientLogger()->info("Initialized client");
+    LU_CORE_WARN("Initialized Log!");
+    LU_INFO("Welcome to Lumina!");
 
     auto app = Lumina::CreateApplication();
     app->Run();

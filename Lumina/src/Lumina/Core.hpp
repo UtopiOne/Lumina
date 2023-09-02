@@ -23,3 +23,5 @@
 #ifdef LU_PLATFORM_MAC
 #error "Lumina only supports Windows and Linux"
 #endif
+
+#define BIT(x) (1 << x)

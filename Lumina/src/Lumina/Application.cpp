@@ -3,12 +3,17 @@
 
 #include "Lumina/Events/ApplicationEvent.hpp"
 #include "Lumina/Log.hpp"
+#include "Lumina/Window.hpp"
+
+#include <GL/gl.h>
+#include <GLFW/glfw3.h>
 
 namespace Lumina
 {
 
     Application::Application()
     {
+        m_Window = std::unique_ptr<Window>(Window::Create());
     }
     Application::~Application()
     {
@@ -16,18 +21,12 @@ namespace Lumina
 
     void Application::Run()
     {
-        WindowResizeEvent e(1280, 720);
-        if (e.IsInCategory(EventCategoryApplication))
+        while (m_Running)
         {
-            LU_TRACE(e);
+            glClearColor(1, 0, 1, 1);
+            glClear(GL_COLOR_BUFFER_BIT);
+            m_Window->OnUpdate();
         }
-        if (e.IsInCategory(EventCategoryInput))
-        {
-            LU_TRACE(e);
-        }
-
-        while (true)
-            ;
     }
 
 } // namespace Lumina

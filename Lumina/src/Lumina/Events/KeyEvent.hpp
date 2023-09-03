@@ -4,7 +4,6 @@
 
 namespace Lumina
 {
-
     class LUMINA_API KeyEvent : public Event
     {
     public:

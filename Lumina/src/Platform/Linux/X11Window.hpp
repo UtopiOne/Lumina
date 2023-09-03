@@ -42,6 +42,7 @@ namespace Lumina
             std::string Title;
             unsigned int Width, Height;
             bool VSync;
+
             EventCallbackFn EventCallback;
         };
 

@@ -2,81 +2,79 @@
 
 #include "Event.hpp"
 
-#include <sstream>
-
 namespace Lumina
 {
 
-class LUMINA_API WindowResizeEvent : public Event
-{
-public:
-    WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height)
+    class LUMINA_API WindowResizeEvent : public Event
     {
-    }
+    public:
+        WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height)
+        {
+        }
 
-    inline unsigned int GetWidth() const
+        inline unsigned int GetWidth() const
+        {
+            return m_Width;
+        }
+        inline unsigned int GetHeight() const
+        {
+            return m_Height;
+        }
+
+        std::string ToString() const override
+        {
+            std::stringstream ss;
+            ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
+            return ss.str();
+        }
+
+        EVENT_CLASS_TYPE(WindowResize)
+        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+    private:
+        unsigned int m_Width, m_Height;
+    };
+
+    class LUMINA_API WindowCloseEvent : public Event
     {
-        return m_Width;
-    }
-    inline unsigned int GetHeight() const
+    public:
+        WindowCloseEvent()
+        {
+        }
+
+        EVENT_CLASS_TYPE(WindowClose)
+        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+    };
+
+    class LUMINA_API AppTickEvent : public Event
     {
-        return m_Height;
-    }
+    public:
+        AppTickEvent()
+        {
+        }
 
-    std::string ToString() const override
+        EVENT_CLASS_TYPE(AppTick)
+        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+    };
+
+    class LUMINA_API AppUpdateEvent : public Event
     {
-        std::stringstream ss;
-        ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
-        return ss.str();
-    }
+    public:
+        AppUpdateEvent()
+        {
+        }
 
-    EVENT_CLASS_TYPE(WindowResize)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-private:
-    unsigned int m_Width, m_Height;
-};
+        EVENT_CLASS_TYPE(AppUpdate)
+        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+    };
 
-class LUMINA_API WindowCloseEvent : public Event
-{
-public:
-    WindowCloseEvent()
+    class LUMINA_API AppRenderEvent : public Event
     {
-    }
+    public:
+        AppRenderEvent()
+        {
+        }
 
-    EVENT_CLASS_TYPE(WindowClose)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-};
-
-class LUMINA_API AppTickEvent : public Event
-{
-public:
-    AppTickEvent()
-    {
-    }
-
-    EVENT_CLASS_TYPE(AppTick)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-};
-
-class LUMINA_API AppUpdateEvent : public Event
-{
-public:
-    AppUpdateEvent()
-    {
-    }
-
-    EVENT_CLASS_TYPE(AppUpdate)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-};
-
-class LUMINA_API AppRenderEvent : public Event
-{
-public:
-    AppRenderEvent()
-    {
-    }
-
-    EVENT_CLASS_TYPE(AppRender)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-};
+        EVENT_CLASS_TYPE(AppRender)
+        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+    };
 } // namespace Lumina

@@ -24,9 +24,10 @@ include_directories(
     ${LUMINA_DIR}/src
 )
 
+
 file(GLOB LUMINA_SOURCE 
-    ${LUMINA_DIR}/src/*.cpp
-    ${LUMINA_DIR}/src/Lumina/*.cpp
+${LUMINA_DIR}/src/*.cpp
+${LUMINA_DIR}/src/Lumina/*.cpp
 )
 
 file(GLOB SPDLOG_SOURCE ${LUMINA_DIR}/vendor/spdlog/src/*.cpp)
@@ -34,6 +35,11 @@ file(GLOB SPDLOG_SOURCE ${LUMINA_DIR}/vendor/spdlog/src/*.cpp)
 add_library(lumina SHARED ${LUMINA_SOURCE})
 add_library(spdlog ${SPDLOG_SOURCE})
 target_include_directories(lumina PUBLIC ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR})
+
+target_precompile_headers(lumina
+    PUBLIC
+    ${LUMINA_DIR}/src/LuPCH.hpp
+)
 
 file(GLOB SANDBOX_SOURCE ${SANDBOX_DIR}/src/*.cpp)
 

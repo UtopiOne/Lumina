@@ -6,16 +6,16 @@
 namespace Lumina
 {
 
-class LUMINA_API Application
-{
-public:
-    Application();
-    virtual ~Application();
+    class LUMINA_API Application
+    {
+    public:
+        Application();
+        virtual ~Application();
 
-    void Run();
-};
+        void Run();
+    };
 
-// To be defined in client
-Application* CreateApplication();
+    // To be defined in client
+    Application* CreateApplication();
 
 } // namespace Lumina

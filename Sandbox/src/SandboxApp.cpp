@@ -1,6 +1,7 @@
 #include "Lumina.hpp"
 #include "Lumina/Application.hpp"
 #include "Lumina/Events/Event.hpp"
+#include "Lumina/ImGui/ImGuiLayer.hpp"
 #include "Lumina/Layer.hpp"
 #include "Lumina/Log.hpp"
 
@@ -28,6 +29,7 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
+        PushOverlay(new Lumina::ImGuiLayer());
     }
 
     ~Sandbox()

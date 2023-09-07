@@ -4,3 +4,6 @@
 [submodule "Lumina/vendor/GLFW"]
 	path = Lumina/vendor/GLFW
 	url = https://github.com/glfw/glfw.git
+[submodule "Lumina/vendor/imgui"]
+	path = Lumina/vendor/imgui
+	url = https://github.com/ocornut/imgui.git

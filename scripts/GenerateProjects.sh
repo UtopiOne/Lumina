@@ -3,7 +3,7 @@ gen() {
 }
 
 run() {
-    build/Sandbox
+    build/out/bin/Sandbox
 }
 
 create() {

@@ -1,14 +1,14 @@
 #include "LuPCH.hpp"
+#include "X11Window.hpp"
 #include "Lumina/Events/Event.hpp"
 #include "Lumina/Events/KeyEvent.hpp"
 #include "Lumina/Events/MouseEvent.hpp"
-#include "X11Window.hpp"
 
 #include "Lumina/Core.hpp"
 #include "Lumina/Log.hpp"
 #include "Lumina/Events/ApplicationEvent.hpp"
 
-#include "GLFW/glfw3.h"
+#include <glad/glad.h>
 
 namespace Lumina
 {
@@ -53,6 +53,10 @@ namespace Lumina
 
         m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_Window);
+
+        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        LU_CORE_ASSERT(status, "Failed to initialize Glad!");
+
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
 

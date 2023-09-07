@@ -1,3 +1,6 @@
+#include <glad/glad.h>
+#include "GLFW/glfw3.h"
+
 #include "LuPCH.hpp"
 #include "X11Window.hpp"
 #include "Lumina/Events/Event.hpp"
@@ -8,7 +11,6 @@
 #include "Lumina/Log.hpp"
 #include "Lumina/Events/ApplicationEvent.hpp"
 
-#include <glad/glad.h>
 
 namespace Lumina
 {
@@ -135,6 +137,12 @@ namespace Lumina
             MouseMovedEvent event((float)xPos, (float)yPos);
             data.EventCallback(event);
         });
+
+        glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode) {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            KeyTypedEvent event(keycode);
+            data.EventCallback(event);
+        });
     }
 
     void X11Window::Shutdown()
@@ -162,4 +170,5 @@ namespace Lumina
     {
         return m_Data.VSync;
     }
+
 } // namespace Lumina

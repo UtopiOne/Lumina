@@ -45,6 +45,30 @@ namespace Lumina
         int m_RepeatCount;
     };
 
+    class LUMINA_API KeyTypedEvent : public KeyEvent
+    {
+    public:
+        KeyTypedEvent(unsigned int keycode) : KeyEvent(keycode)
+        {
+        }
+
+        inline int GetRepeatCount() const
+        {
+            return m_RepeatCount;
+        }
+
+        std::string ToString() const override
+        {
+            std::stringstream ss;
+            ss << "KeyTypedEvent: " << m_KeyCode << "\n";
+            return ss.str();
+        }
+
+        EVENT_CLASS_TYPE(KeyTyped)
+    private:
+        int m_RepeatCount;
+    };
+
     class LUMINA_API KeyReleasedEvent : public KeyEvent
     {
     public:

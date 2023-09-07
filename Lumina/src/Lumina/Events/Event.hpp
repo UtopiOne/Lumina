@@ -19,11 +19,15 @@ namespace Lumina
         WindowFocus,
         WindowLostFocus,
         WindowMoved,
+
         AppTick,
         AppUpdate,
         AppRender,
+
         KeyPressed,
         KeyReleased,
+        KeyTyped,
+
         MouseButtonPressed,
         MouseButtonReleased,
         MouseMoved,

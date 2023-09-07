@@ -1,6 +1,5 @@
 #pragma once
 
-#include <signal.h>
 
 #ifdef LU_PLATFORM_WINDOWS
     #ifdef LU_BUILD_SHARED
@@ -36,6 +35,7 @@
 #endif
 
 #ifdef LU_PLATFORM_LINUX
+    #include <signal.h>
     #ifdef LU_BUILD_SHARED
 
         #define LUMINA_API
@@ -73,3 +73,5 @@
 
 
 #define BIT(x) (1 << x)
+
+#define LU_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

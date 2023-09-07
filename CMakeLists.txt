@@ -59,11 +59,11 @@ file(GLOB IMGUI_SOURCE
     ${LUMINA_DIR}/vendor/imgui/backends/imgui_impl_opengl3.cpp
 )
 
+add_library(imgui STATIC ${IMGUI_SOURCE})
 add_library(lumina SHARED ${LUMINA_SOURCE})
 add_library(spdlog STATIC ${SPDLOG_SOURCE})
 # add_library(GLFW STATIC ${GLFW_SOURCE})
 add_library(glad STATIC ${GLAD_SOURCE})
-add_library(imgui STATIC ${IMGUI_SOURCE})
 target_include_directories(lumina PUBLIC ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR})
 
 target_precompile_headers(lumina

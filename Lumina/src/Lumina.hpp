@@ -1,6 +1,6 @@
 #pragma once
 
-// For use by Limuna apps
+// For use by Lumina apps
 
 #include "Lumina/Application.hpp"
 #include "Lumina/Layer.hpp"

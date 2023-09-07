@@ -33,45 +33,5 @@ include_directories(
     ${LUMINA_DIR}/src
 )
 
-file(GLOB LUMINA_SOURCE 
-    ${LUMINA_DIR}/src/*.cpp
-    ${LUMINA_DIR}/src/Lumina/*.cpp
-    ${LUMINA_DIR}/src/Lumina/ImGui/*.cpp
-    ${LUMINA_DIR}/src/Platform/Linux/*.cpp
-    ${LUMINA_DIR}/src/Platform/OpenGL/*.cpp
-)
-
-file(GLOB SPDLOG_SOURCE 
-    ${LUMINA_DIR}/vendor/spdlog/src/*.cpp
-)
-
-file(GLOB GLFW_SOURCE
-    ${LUMINA_DIR}/vendor/GLFW/src/*.c
-)
-
-file(GLOB GLAD_SOURCE 
-    ${LUMINA_DIR}/vendor/GLAD/src/*.c
-)
-
-file(GLOB IMGUI_SOURCE
-    ${LUMINA_DIR}/vendor/imgui/*.cpp
-    ${LUMINA_DIR}/vendor/imgui/backends/imgui_impl_glfw.cpp
-    ${LUMINA_DIR}/vendor/imgui/backends/imgui_impl_opengl3.cpp
-)
-
-add_library(imgui STATIC ${IMGUI_SOURCE})
-add_library(lumina SHARED ${LUMINA_SOURCE})
-add_library(spdlog STATIC ${SPDLOG_SOURCE})
-# add_library(GLFW STATIC ${GLFW_SOURCE})
-add_library(glad STATIC ${GLAD_SOURCE})
-target_include_directories(lumina PUBLIC ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR})
-
-target_precompile_headers(lumina
-    PUBLIC
-    ${LUMINA_DIR}/src/LuPCH.hpp
-)
-
-file(GLOB SANDBOX_SOURCE ${SANDBOX_DIR}/src/*.cpp)
-
-add_executable(Sandbox ${SANDBOX_SOURCE})
-target_link_libraries(Sandbox PRIVATE lumina GL glfw spdlog glad imgui)
+add_subdirectory(Lumina)
+add_subdirectory(Sandbox)

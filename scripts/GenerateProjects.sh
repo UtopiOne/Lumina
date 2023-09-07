@@ -2,6 +2,11 @@ gen() {
     cmake -B build/ -S .
 }
 
+build() {
+    gen
+    cmake --build build/
+}
+
 run() {
     build/out/bin/Sandbox
 }

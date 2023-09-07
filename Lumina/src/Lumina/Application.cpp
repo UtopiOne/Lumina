@@ -3,6 +3,8 @@
 
 #include "Lumina/Events/ApplicationEvent.hpp"
 #include "Lumina/Events/Event.hpp"
+#include "Lumina/Events/KeyEvent.hpp"
+#include "Lumina/Layer.hpp"
 #include "Lumina/Log.hpp"
 #include "Lumina/Window.hpp"
 
@@ -23,12 +25,27 @@ namespace Lumina
     {
     }
 
+    void Application::PushLayer(Layer* layer)
+    {
+        m_LayerStack.PushLayer(layer);
+    }
+
+    void Application::PushOverlay(Layer* layer)
+    {
+        m_LayerStack.PushOverlay(layer);
+    }
+
     void Application::OnEvent(Event& e)
     {
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-        LU_CORE_TRACE("{0}", e);
+        for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+        {
+            (*--it)->OnEvent(e);
+            if (e.Handled)
+                break;
+        }
     }
 
 
@@ -38,6 +55,10 @@ namespace Lumina
         {
             glClearColor(1, 0, 1, 1);
             glClear(GL_COLOR_BUFFER_BIT);
+
+            for (Layer* layer : m_LayerStack)
+                layer->OnUpdate();
+
             m_Window->OnUpdate();
         }
     }

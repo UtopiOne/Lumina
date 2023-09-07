@@ -149,3 +149,4 @@ vendor/premake/premake5
 Makefile
 compile_flags.txt
 bin-int/
+.cache/

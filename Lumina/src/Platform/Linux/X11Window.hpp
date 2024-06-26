@@ -28,6 +28,11 @@ namespace Lumina
             m_Data.EventCallback = callback;
         }
         void SetVSync(bool enabled) override;
+        inline virtual void* GetNativeWindow() const override
+        {
+            return m_Window;
+        };
+
         bool IsVSync() const override;
 
     private:

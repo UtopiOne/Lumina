@@ -8,6 +8,7 @@
 #include "Lumina/Layer.hpp"
 #include "Lumina/Log.hpp"
 #include "Lumina/Window.hpp"
+#include "Lumina/Input.hpp"
 
 #include <glad/glad.h>
 #include <functional>
@@ -57,16 +58,18 @@ namespace Lumina
         }
     }
 
-
     void Application::Run()
     {
         while (m_Running)
         {
-            glClearColor(1, 0, 1, 1);
+            glClearColor(0.1, 0.1, 0.1, 1);
             glClear(GL_COLOR_BUFFER_BIT);
 
             for (Layer* layer : m_LayerStack)
                 layer->OnUpdate();
+
+            auto [x, y] = Input::GetMousePosition();
+            LU_CORE_TRACE("{0}, {1}", x, y);
 
             m_Window->OnUpdate();
         }

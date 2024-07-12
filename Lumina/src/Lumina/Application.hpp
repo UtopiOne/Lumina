@@ -6,6 +6,7 @@
 #include "Lumina/Layer.hpp"
 #include "Lumina/LayerStack.hpp"
 #include "Window.hpp"
+#include "ImGui/ImGuiLayer.hpp"
 
 namespace Lumina
 {
@@ -36,6 +37,7 @@ namespace Lumina
         bool OnWindowClose(WindowCloseEvent& e);
 
         std::unique_ptr<Window> m_Window;
+        ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
 

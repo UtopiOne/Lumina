@@ -1,4 +1,5 @@
 #include <Lumina.hpp>
+#include <imgui.h>
 
 class ExampleLayer : public Lumina::Layer
 {
@@ -16,6 +17,13 @@ public:
         }
     }
 
+    virtual void OnImGuiRender() override
+    {
+        ImGui::Begin("Test");
+        ImGui::Text("Hello World!");
+        ImGui::End();
+    }
+
     void OnEvent(Lumina::Event& event) override
     {
         LU_TRACE("{0}", event);
@@ -28,7 +36,6 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
-        PushOverlay(new Lumina::ImGuiLayer());
     }
 
     ~Sandbox()

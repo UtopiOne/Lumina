@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.22)
 project(Lumina)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_COMPILER clang++)
-set(CMAKE_C_COMPILER clang)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/out/lib)

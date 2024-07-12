@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-file(GLOB LUMINA_SOURCE 
+file(GLOB LUMINA_SOURCE
     src/*.cpp
     src/Lumina/*.cpp
     src/Lumina/ImGui/*.cpp
@@ -8,7 +8,7 @@ file(GLOB LUMINA_SOURCE
     src/Platform/OpenGL/*.cpp
 )
 
-file(GLOB SPDLOG_SOURCE 
+file(GLOB SPDLOG_SOURCE
     vendor/spdlog/src/*.cpp
 )
 
@@ -33,9 +33,15 @@ add_library(spdlog STATIC ${SPDLOG_SOURCE})
 # add_library(GLFW STATIC ${GLFW_SOURCE})
 add_library(glad STATIC ${GLAD_SOURCE}
         src/Lumina/MouseButtonCodes.hpp)
+
+add_subdirectory(vendor/glm)
+
+set(CMAKE_CXX_COMPILER clang++-18)
+set(CMAKE_C_COMPILER clang-18)
+
 target_include_directories(lumina PUBLIC ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR})
 
 target_precompile_headers(lumina
-    PUBLIC
-    ${LUMINA_DIR}/src/LuPCH.hpp
+        PUBLIC
+        ${LUMINA_DIR}/src/LuPCH.hpp
 )

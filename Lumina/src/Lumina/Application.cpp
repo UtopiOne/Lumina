@@ -12,6 +12,7 @@
 
 #include <glad/glad.h>
 #include <functional>
+#include <GLFW/glfw3.h>
 
 namespace Lumina
 {
@@ -70,6 +71,7 @@ namespace Lumina
 
             auto [x, y] = Input::GetMousePosition();
             LU_CORE_TRACE("{0}, {1}", x, y);
+
 
             m_Window->OnUpdate();
         }

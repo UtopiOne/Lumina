@@ -147,7 +147,7 @@ ipch/
 # Custom
 vendor/premake/premake5
 Makefile
-compile_flags.txt
+compile_commands.json
 bin-int/
 .cache/
 imgui.ini

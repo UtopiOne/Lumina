@@ -1,9 +1,4 @@
-#include "Lumina.hpp"
-#include "Lumina/Application.hpp"
-#include "Lumina/Events/Event.hpp"
-#include "Lumina/ImGui/ImGuiLayer.hpp"
-#include "Lumina/Layer.hpp"
-#include "Lumina/Log.hpp"
+#include <Lumina.hpp>
 
 class ExampleLayer : public Lumina::Layer
 {
@@ -15,6 +10,10 @@ public:
     void OnUpdate() override
     {
         LU_INFO("ExampleLayer::Update");
+        if (Lumina::Input::IsKeyPressed(LU_KEY_TAB))
+        {
+            LU_TRACE("Tab key is pressed");
+        }
     }
 
     void OnEvent(Lumina::Event& event) override

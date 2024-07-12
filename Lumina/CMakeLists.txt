@@ -27,10 +27,12 @@ file(GLOB IMGUI_SOURCE
 )
 
 add_library(imgui STATIC ${IMGUI_SOURCE})
-add_library(lumina SHARED ${LUMINA_SOURCE})
+add_library(lumina SHARED ${LUMINA_SOURCE}
+        src/Lumina/KeyCodes.hpp)
 add_library(spdlog STATIC ${SPDLOG_SOURCE})
 # add_library(GLFW STATIC ${GLFW_SOURCE})
-add_library(glad STATIC ${GLAD_SOURCE})
+add_library(glad STATIC ${GLAD_SOURCE}
+        src/Lumina/MouseButtonCodes.hpp)
 target_include_directories(lumina PUBLIC ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR})
 
 target_precompile_headers(lumina

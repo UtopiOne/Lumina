@@ -25,10 +25,6 @@ add_compile_definitions(DEBUG)
 
 include_directories(
     ${LUMINA_DIR}/vendor/spdlog/include
-    ${LUMINA_DIR}/vendor/GLFW/include
-    ${LUMINA_DIR}/vendor/GLAD/include
-    ${LUMINA_DIR}/vendor/imgui
-    ${LUMINA_DIR}/src
 )
 
 add_subdirectory(Lumina)

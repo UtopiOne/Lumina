@@ -1,18 +1,10 @@
-#include "LuPCH.hpp"
 #include "Application.hpp"
 
-#include "Lumina/Core.hpp"
-#include "Lumina/Events/ApplicationEvent.hpp"
-#include "Lumina/Events/Event.hpp"
-#include "Lumina/Events/KeyEvent.hpp"
-#include "Lumina/Layer.hpp"
-#include "Lumina/Log.hpp"
-#include "Lumina/Window.hpp"
-#include "Lumina/Input.hpp"
-
 #include <glad/glad.h>
-#include <functional>
 #include <GLFW/glfw3.h>
+
+#include "LuPCH.hpp"
+#include "Lumina/Input.hpp"
 
 namespace Lumina
 {

@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 
+add_subdirectory(vendor/GLFW) 
+
 file(GLOB LUMINA_SOURCE
     src/*.cpp
     src/Lumina/*.cpp
@@ -14,6 +16,7 @@ file(GLOB SPDLOG_SOURCE
 
 file(GLOB GLFW_SOURCE
     vendor/GLFW/src/*.c
+    vendor/GLFW/src/*.h
 )
 
 file(GLOB GLAD_SOURCE 
@@ -29,8 +32,7 @@ file(GLOB IMGUI_SOURCE
 add_library(imgui STATIC ${IMGUI_SOURCE})
 add_library(lumina SHARED ${LUMINA_SOURCE}
         src/Lumina/KeyCodes.hpp)
-add_library(spdlog STATIC ${SPDLOG_SOURCE})
-# add_library(GLFW STATIC ${GLFW_SOURCE})
+add_subdirectory(vendor/spdlog)
 add_library(glad STATIC ${GLAD_SOURCE}
         src/Lumina/MouseButtonCodes.hpp)
 

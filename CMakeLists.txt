@@ -21,7 +21,6 @@ if(WIN32)
 endif(WIN32)
 
 add_compile_definitions(SPDLOG_COMPILED_LIB)
-add_compile_definitions(GLFW_INCLUDE_NONE)
 add_compile_definitions(DEBUG)
 
 include_directories(

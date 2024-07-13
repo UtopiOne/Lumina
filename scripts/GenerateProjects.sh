@@ -1,20 +1,6 @@
-gen() {
-    cmake -B build/ -S . -G Ninja
-}
-
-build() {
-    gen
-    cmake --build build/
-}
-
-run() {
-    build/out/bin/Sandbox
-}
-
-create() {
-    gen
-    cmake --build build/
-    echo "Running your app"
-    echo
-    run
-}
+#!/bin/sh
+set -e
+cmake -B build/ -S . -G Ninja
+cmake --build build/
+echo "Running your app"
+build/out/bin/Sandbox

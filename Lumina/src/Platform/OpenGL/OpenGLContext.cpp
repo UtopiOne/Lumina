@@ -17,6 +17,14 @@ void OpenGLContext::Init() {
 
     int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     LU_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+    const char* glVendor = reinterpret_cast<const char*>(glGetString(GL_VENDOR));
+    const char* glRenderer = reinterpret_cast<const char*>(glGetString(GL_RENDERER));
+    const char* glVersion = reinterpret_cast<const char*>(glGetString(GL_VERSION));
+    LU_CORE_INFO("OpenGL info:");
+    LU_CORE_INFO("  Vendor: {0}", glVendor);
+    LU_CORE_INFO("  Renderer: {0}", glRenderer);
+    LU_CORE_INFO("  Version: {0}", glVersion);
 }
 
 void OpenGLContext::SwapBuffers() {

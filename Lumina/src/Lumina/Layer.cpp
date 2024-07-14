@@ -1,15 +1,12 @@
 #include "LuPCH.hpp"
 #include "Layer.hpp"
 
-namespace Lumina
-{
+namespace Lumina {
 
-    Layer::Layer(const std::string& debugName) : m_DebugName(debugName)
-    {
-    }
+Layer::Layer(const std::string& debugName) : m_DebugName(debugName) {
+}
 
-    Layer::~Layer()
-    {
-    }
+Layer::~Layer() {
+}
 
 } // namespace Lumina

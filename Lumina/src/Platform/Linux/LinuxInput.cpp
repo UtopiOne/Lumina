@@ -6,52 +6,47 @@
 
 #include "LinuxInput.hpp"
 
-namespace Lumina
-{
-    Input* Input::s_Instance = new LinuxInput();
+namespace Lumina {
 
-    bool LinuxInput::IsKeyPressedImpl(int keycode)
-    {
-        auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+Input* Input::s_Instance = new LinuxInput();
 
-        auto state = glfwGetKey(window, keycode);
+bool LinuxInput::IsKeyPressedImpl(int keycode) {
+    auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 
-        return state == GLFW_PRESS || state == GLFW_REPEAT;
-    }
+    auto state = glfwGetKey(window, keycode);
 
-    bool LinuxInput::IsMouseButtonPressedImpl(int button)
-    {
-        auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+    return state == GLFW_PRESS || state == GLFW_REPEAT;
+}
 
-        auto state = glfwGetMouseButton(window, button);
-        return state == GLFW_PRESS;
-    }
+bool LinuxInput::IsMouseButtonPressedImpl(int button) {
+    auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 
-    std::pair<float, float> LinuxInput::GetMousePositionImpl()
-    {
-        auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-        double xpos, ypos;
+    auto state = glfwGetMouseButton(window, button);
+    return state == GLFW_PRESS;
+}
 
-        glfwGetCursorPos(window, &xpos, &ypos);
-        return {(float)xpos, (float)ypos};
-    }
+std::pair<float, float> LinuxInput::GetMousePositionImpl() {
+    auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+    double xpos, ypos;
 
-    float LinuxInput::GetMouseXImpl()
-    {
-        auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-        double xpos, ypos;
+    glfwGetCursorPos(window, &xpos, &ypos);
+    return {(float)xpos, (float)ypos};
+}
 
-        glfwGetCursorPos(window, &xpos, &ypos);
-        return (float)xpos;
-    }
+float LinuxInput::GetMouseXImpl() {
+    auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+    double xpos, ypos;
 
-    float LinuxInput::GetMouseYImpl()
-    {
-        auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-        double xpos, ypos;
+    glfwGetCursorPos(window, &xpos, &ypos);
+    return (float)xpos;
+}
 
-        glfwGetCursorPos(window, &xpos, &ypos);
-        return (float)ypos;
-    }
+float LinuxInput::GetMouseYImpl() {
+    auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+    double xpos, ypos;
+
+    glfwGetCursorPos(window, &xpos, &ypos);
+    return (float)ypos;
+}
 
 } // namespace Lumina

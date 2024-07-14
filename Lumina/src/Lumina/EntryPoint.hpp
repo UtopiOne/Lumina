@@ -7,8 +7,7 @@
 
 extern Lumina::Application* Lumina::CreateApplication();
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     Lumina::Log::Init();
     LU_CORE_WARN("Initialized Log!");
     LU_INFO("Welcome to Lumina!");
@@ -24,8 +23,7 @@ int main(int argc, char** argv)
 
 extern Lumina::Application* Lumina::CreateApplication();
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     Lumina::Log::Init();
     LU_CORE_WARN("Initialized Log!");
     LU_INFO("Welcome to Lumina!");

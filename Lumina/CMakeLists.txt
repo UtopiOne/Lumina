@@ -38,8 +38,9 @@ add_library(spdlog STATIC)
 target_include_directories(spdlog PUBLIC vendor/spdlog/include)
 target_sources(spdlog PRIVATE ${SPDLOG_SOURCE})
 
-add_library(glad STATIC ${GLAD_SOURCE})
+add_library(glad STATIC)
 target_include_directories(glad PUBLIC vendor/GLAD/include)
+target_sources(glad PRIVATE ${GLAD_SOURCE})
 
 add_subdirectory(vendor/glm)
 

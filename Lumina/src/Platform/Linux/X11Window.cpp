@@ -1,4 +1,3 @@
-#include <glad/glad.h>
 #include "GLFW/glfw3.h"
 
 #include "LuPCH.hpp"
@@ -10,6 +9,7 @@
 #include "Lumina/Core.hpp"
 #include "Lumina/Log.hpp"
 #include "Lumina/Events/ApplicationEvent.hpp"
+#include "Platform/OpenGL/OpenGLContext.hpp"
 
 
 namespace Lumina
@@ -44,6 +44,7 @@ namespace Lumina
 
         LU_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
+
         if (!s_GLFWInitialized)
         {
             glfwSetErrorCallback(GLFWErrorCallback);
@@ -54,10 +55,11 @@ namespace Lumina
         }
 
         m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-        glfwMakeContextCurrent(m_Window);
 
-        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-        LU_CORE_ASSERT(status, "Failed to initialize Glad!");
+        m_Context = new OpenGLContext(m_Window);
+
+        m_Context->Init();
+
 
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
@@ -153,6 +155,7 @@ namespace Lumina
     void X11Window::OnUpdate()
     {
         glfwPollEvents();
+        m_Context->SwapBuffers();
         glfwSwapBuffers(m_Window);
     }
 

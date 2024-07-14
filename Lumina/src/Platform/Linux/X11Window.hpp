@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Lumina/Window.hpp"
+#include "Lumina/Renderer/GraphicsContext.hpp"
 
 #include <GLFW/glfw3.h>
 
@@ -41,6 +42,7 @@ namespace Lumina
 
     private:
         GLFWwindow* m_Window;
+        GraphicsContext* m_Context;
 
         struct WindowData
         {

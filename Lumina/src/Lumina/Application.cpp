@@ -47,7 +47,9 @@ namespace Lumina
         {
             (*--it)->OnEvent(e);
             if (e.Handled)
+            {
                 break;
+            }
         }
     }
 
@@ -59,11 +61,15 @@ namespace Lumina
             glClear(GL_COLOR_BUFFER_BIT);
 
             for (Layer* layer : m_LayerStack)
+            {
                 layer->OnUpdate();
+            }
 
             m_ImGuiLayer->Begin();
             for (Layer* layer : m_LayerStack)
+            {
                 layer->OnImGuiRender();
+            }
             m_ImGuiLayer->End();
 
             auto [x, y] = Input::GetMousePosition();

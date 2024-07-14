@@ -6,6 +6,7 @@ file(GLOB LUMINA_SOURCE
     src/*.cpp
     src/Lumina/*.cpp
     src/Lumina/ImGui/*.cpp
+    src/Lumina/Renderer/*.cpp
     src/Platform/Linux/*.cpp
     src/Platform/OpenGL/*.cpp
 )

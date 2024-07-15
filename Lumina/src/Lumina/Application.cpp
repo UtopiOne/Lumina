@@ -6,6 +6,7 @@
 #include "LuPCH.hpp"
 #include "Lumina/Input.hpp"
 #include "Lumina/Renderer/Buffer.hpp"
+#include "Lumina/Renderer/Shader.hpp"
 
 namespace Lumina {
 
@@ -74,7 +75,7 @@ Application::Application() {
         }
     )";
 
-    m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
+    m_Shader.reset(Shader::Create(vertexSrc, fragmentSrc));
 }
 
 Application::~Application() {

@@ -11,10 +11,10 @@ namespace Lumina {
 Shader* Shader::Create(const std::string& vertexSrc, const std::string& fragmentSrc) {
 
     switch (Renderer::GetAPI()) {
-    case RendererAPI::None:
+    case RendererAPI::API::None:
         LU_CORE_ASSERT(false, "RendererAPI: None");
         return nullptr;
-    case RendererAPI::OpenGL:
+    case RendererAPI::API::OpenGL:
         return new OpenGLShader(vertexSrc, fragmentSrc);
     }
 

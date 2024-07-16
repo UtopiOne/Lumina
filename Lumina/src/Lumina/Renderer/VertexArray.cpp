@@ -11,10 +11,10 @@ namespace Lumina {
 
 VertexArray* VertexArray::Create() {
     switch (Renderer::GetAPI()) {
-    case RendererAPI::None:
+    case RendererAPI::API::None:
         LU_CORE_ASSERT(false, "RendererAPI::None");
         return nullptr;
-    case RendererAPI::OpenGL:
+    case RendererAPI::API::OpenGL:
         return new OpenGLVertexArray();
     }
 

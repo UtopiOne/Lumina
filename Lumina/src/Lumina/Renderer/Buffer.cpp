@@ -5,7 +5,6 @@
 #include "Lumina/Core.hpp"
 #include "Platform/OpenGL/OpenGLBuffer.hpp"
 #include "Renderer.hpp"
-#include <memory>
 
 namespace Lumina {
 

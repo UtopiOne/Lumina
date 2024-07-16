@@ -5,10 +5,13 @@
 #include "Lumina/Events/ApplicationEvent.hpp"
 #include "Lumina/Layer.hpp"
 #include "Lumina/LayerStack.hpp"
-#include "Lumina/Renderer/Buffer.hpp"
-#include "Lumina/Renderer/Shader.hpp"
 #include "Window.hpp"
 #include "ImGui/ImGuiLayer.hpp"
+
+#include "Lumina/Renderer/Buffer.hpp"
+#include "Lumina/Renderer/Shader.hpp"
+#include "Lumina/Renderer/VertexArray.hpp"
+
 #include <memory>
 
 namespace Lumina {
@@ -40,11 +43,12 @@ private:
     bool m_Running = true;
     LayerStack m_LayerStack;
 
-    unsigned int m_VertexArray;
+    std::shared_ptr<Shader> m_Shader;
+    std::shared_ptr<Shader> m_Shader2;
 
-    std::unique_ptr<Shader> m_Shader;
-    std::unique_ptr<VertexBuffer> m_VertexBuffer;
-    std::unique_ptr<IndexBuffer> m_IndexBuffer;
+    std::shared_ptr<VertexArray> m_VertexArray;
+
+    std::shared_ptr<VertexArray> m_SquareVA;
 
 private:
     static Application* s_Instance;

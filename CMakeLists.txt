@@ -23,6 +23,7 @@ endif(WIN32)
 
 add_compile_definitions(SPDLOG_COMPILED_LIB)
 add_compile_definitions(DEBUG)
+add_compile_definitions(LU_ENABLE_ASSERTS)
 
 include_directories(
     ${LUMINA_DIR}/vendor/spdlog/include

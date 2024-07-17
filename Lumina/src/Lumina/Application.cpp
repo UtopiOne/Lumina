@@ -7,11 +7,13 @@
 #include "Lumina/Renderer/Renderer.hpp"
 #include "Lumina/Renderer/VertexArray.hpp"
 
+#include "Lumina/Renderer/Camera.hpp"
+
 namespace Lumina {
 
 Application* Application::s_Instance = nullptr;
 
-Application::Application() {
+Application::Application() : m_Camera(-1.6f, 1.6f, -0.9f, 0.9f) {
     LU_CORE_ASSERT(!s_Instance, "Application already exists!");
     s_Instance = this;
 
@@ -64,11 +66,13 @@ Application::Application() {
         layout(location = 0) in vec3 a_Position;
         layout(location = 1) in vec4 a_Color;
 
+        uniform mat4 u_ViewProjectionMatrix;
+
         out vec4 v_Color;
 
         void main() {
             v_Color = a_Color;
-            gl_Position = vec4(a_Position, 1.0);
+            gl_Position = u_ViewProjectionMatrix * vec4(a_Position, 1.0);
         }
     )";
 
@@ -89,8 +93,10 @@ Application::Application() {
     
         layout(location = 0) in vec3 a_Position;
 
+        uniform mat4 u_ViewProjectionMatrix;
+
         void main() {
-            gl_Position = vec4(a_Position, 1.0);
+            gl_Position = u_ViewProjectionMatrix * vec4(a_Position, 1.0);
         }
     )";
 
@@ -138,13 +144,12 @@ void Application::Run() {
         RenderCommand::SetClearColor({0.2f, 0.2f, 0.2f, 1.0f});
         RenderCommand::Clear();
 
-        Renderer::BeginScene();
+        m_Camera.SetRotation(45.0f);
 
-        m_Shader2->Bind();
-        Renderer::Submit(m_SquareVA);
+        Renderer::BeginScene(m_Camera);
 
-        m_Shader->Bind();
-        Renderer::Submit(m_VertexArray);
+        Renderer::Submit(m_Shader2, m_SquareVA);
+        Renderer::Submit(m_Shader, m_VertexArray);
 
         Renderer::EndScene();
 
